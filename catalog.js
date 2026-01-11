@@ -17,7 +17,9 @@ window.CTB_PRODUCTS = {
       ["QR link", "Guided brewing + taste + quiz + result"]
     ],
     howItWorks: [
-      "Choose your brew method (French Press / V60 / Moka Pot)",
+      "Choose your brew method: French Press",
+      "Choose your brew method: V60 / Pour-over",
+      "Choose your brew method: Moka Pot",
       "Brew the default recipe on our website (beginner-friendly)",
       "Taste & track using the checklist",
       "Take the quiz and get your taste profile",
@@ -28,7 +30,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days (city dependent)"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Brew method", "Delivery city", "Phone number"],
     whatsappProductLine: "Beginner • Find Your Taste Box (A–D)"
@@ -57,7 +59,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "V60 Dripper (Plastic)"
@@ -86,7 +88,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Pack size (40/60/100)", "Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "V60 Paper Filters"
@@ -108,6 +110,9 @@ window.CTB_PRODUCTS = {
       ["QR link", "Guided brewing + taste + quiz + result"]
     ],
     howItWorks: [
+      "Choose your brew method: French Press",
+      "Choose your brew method: V60 / Pour-over",
+      "Choose your brew method: Moka Pot",
       "Pick ONE brew method for the whole box (recommended)",
       "Brew each sample using the same default recipe",
       "Taste & track what changes between origins",
@@ -119,7 +124,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days (city dependent)"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Brew method", "Delivery city", "Phone number"],
     whatsappProductLine: "Intermediate • Explore Origins Box (A–F)"
@@ -141,6 +146,9 @@ window.CTB_PRODUCTS = {
       ["QR link", "Guided brewing + taste + quiz + result"]
     ],
     howItWorks: [
+      "Choose your brew method: French Press",
+      "Choose your brew method: V60 / Pour-over",
+      "Choose your brew method: Moka Pot",
       "Use the same brew method across all roasts",
       "Brew from light → dark in order (recommended)",
       "Taste how acidity drops and roast flavor increases",
@@ -152,7 +160,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days (city dependent)"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Brew method", "Delivery city", "Phone number"],
     whatsappProductLine: "Intermediate • Roast Spectrum Box (A–F)"
@@ -185,7 +193,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days (city dependent)"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Capacity (350/600ml)", "Delivery city", "Phone number"],
     whatsappProductLine: "Starter Bundle (Beginner Box + French Press + Filters)"
@@ -214,7 +222,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Color (optional)", "Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "Coffee Cup / Mug"
@@ -243,7 +251,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "Tasting Spoon"
@@ -272,7 +280,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Capacity (350/600ml)", "Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "French Press (350–600ml)"
@@ -301,7 +309,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "Moka Pot (3-cup)"
@@ -330,7 +338,7 @@ window.CTB_PRODUCTS = {
     delivery: [
       ["Delivery", "Azerbaijan (Baku + regions)"],
       ["Time", "Usually 1–4 days"],
-      ["Payment", "We send a secure payment link after confirming stock + total"]
+      ["Payment", "Payment link after confirmation"]
     ],
     whatsappFields: ["Quantity", "Delivery city", "Phone number"],
     whatsappProductLine: "Coffee Scale (0.1g)"
