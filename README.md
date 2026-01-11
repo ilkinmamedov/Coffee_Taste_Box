@@ -25,3 +25,10 @@ All data stays in your browser (sessionStorage). Nothing is sent to a server.
 
 ## Local usage
 Just open `index.html` in your browser.
+
+
+## License
+
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute the code,
+but the Coffee Taste Box brand and concept remain proprietary.
