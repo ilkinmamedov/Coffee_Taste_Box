@@ -1,6 +1,17 @@
-# macOS
+# ===== System =====
 .DS_Store
+Thumbs.db
 
-# IDE
+# ===== Editors / IDEs =====
 .idea/
 .vscode/
+*.iml
+
+# ===== Logs =====
+*.log
+
+# ===== Node (only if you add it later) =====
+node_modules/
+dist/
+build/
+.cache/
