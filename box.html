@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Choose Your Box • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Choose your box</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="index.html">Home</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress">
+      <span class="progress-step is-active">Box</span>
+      <span class="progress-step">Setup</span>
+      <span class="progress-step">Brew</span>
+      <span class="progress-step">Taste</span>
+      <span class="progress-step">Quiz</span>
+      <span class="progress-step">Result</span>
+    </div>
+
+    <div class="card">
+      <h1>Choose your box</h1>
+      <p class="muted">
+  Pick a box based on what you want to learn. We’ll keep everything simple and beginner-friendly.
+</p>
+<p class="muted small">
+  Tip: Use the same brew method for the whole box so your comparisons are fair.
+</p>
+
+
+      <div class="grid three">
+        <button class="card pick-card" data-box="beginner_find_your_taste">
+          <div class="pick-top">
+            <span class="tag">Beginner</span>
+            <h3 class="pick-title">Find Your Taste</h3>
+            <p class="muted small">Comforting vs bright + roast direction.</p>
+          </div>
+          <div class="pick-meta">
+            <div><span class="muted small">Coffees</span><div class="strong">4 (A–D)</div></div>
+            <div><span class="muted small">Best with</span><div class="strong">French Press</div></div>
+          </div>
+        </button>
+
+        <button class="card pick-card" data-box="intermediate_explore_origins">
+          <div class="pick-top">
+            <span class="tag">Intermediate</span>
+            <h3 class="pick-title">Explore Origins</h3>
+            <p class="muted small">Same roast, different origins.</p>
+          </div>
+          <div class="pick-meta">
+            <div><span class="muted small">Coffees</span><div class="strong">6 (A–F)</div></div>
+            <div><span class="muted small">Best with</span><div class="strong">V60 / French Press</div></div>
+          </div>
+        </button>
+
+        <button class="card pick-card" data-box="intermediate_roast_spectrum">
+          <div class="pick-top">
+            <span class="tag">Intermediate</span>
+            <h3 class="pick-title">Roast Spectrum</h3>
+            <p class="muted small">Same origin, different roasts.</p>
+          </div>
+          <div class="pick-meta">
+            <div><span class="muted small">Coffees</span><div class="strong">6 (A–F)</div></div>
+            <div><span class="muted small">Best with</span><div class="strong">French Press / Moka</div></div>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="card subtle">
+      <h3 class="h4">What’s inside (sample preview)</h3>
+      <p class="muted small">
+  Your real box may vary slightly — this preview shows the style of coffees you’ll taste.
+  <br/>Taste hot → warm → cool to notice more flavors.
+</p>      <div id="boxPreview" class="grid two"></div>
+    </div>
+
+    <div class="stage-actions">
+      <a class="btn" href="index.html">Back</a>
+      <a class="btn primary" href="setup.html">Continue → Setup</a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="muted small">No account required • Results are not stored</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+  <script>CTB.initBoxPage();</script>
+</body>
+</html>

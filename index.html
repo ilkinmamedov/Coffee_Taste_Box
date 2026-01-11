@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Coffee Taste Box • Guided Tasting</title>
+  <meta name="description" content="Guided coffee tasting. No account. No saving. Screenshot your result if you want." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Discover what you like</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="shop.html">Shop</a>
+        <a class="btn small" href="start.html">Start</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card hero">
+      <h1>Your Coffee Taste Journey</h1>
+      <p class="muted">
+        Brew → Taste → Learn → Quiz → Result<br />
+        No account. No saving. Screenshot your result if you want.
+      </p>
+
+      <div class="notice">
+        <strong>Privacy note:</strong> Your answers stay in your browser tab only (sessionStorage). We don’t store results.
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="box.html">Start tasting</a>
+        <a class="btn" href="shop.html">Shop boxes & gear</a>
+        <a class="btn" href="box.html">Choose your box</a>
+      </div>
+
+      <p class="muted small" style="margin-top:12px;">
+        New here? Start with <strong>Beginner • Find Your Taste</strong> — it’s built for first-time tasters.
+      </p>
+    </div>
+
+    <!-- NEW: SHOP CONVERSION CARD -->
+    <div class="card">
+      <div class="card-head">
+        <h2>Want to start from zero?</h2>
+        <span class="badge">Azerbaijan only (for now)</span>
+      </div>
+
+      <p class="muted">
+        Buy a tasting box → scan the QR → follow the guided steps here.
+        In 15 minutes, you’ll know what style you like (Balanced / Bright / Bold / Adventurous).
+      </p>
+
+      <div class="notice subtle" style="margin-top:14px;">
+        <strong>Ordering:</strong> WhatsApp → we confirm stock & delivery → you pay via link → we deliver.
+      </div>
+
+      <div class="stage-actions" style="margin-top:16px;">
+        <a class="btn primary" href="shop.html#boxes">Shop tasting boxes</a>
+        <a class="btn" href="shop.html#equipment">Shop equipment</a>
+        <a class="btn" href="shop.html#accessories">Shop accessories</a>
+      </div>
+
+      <p class="muted small" style="margin-top:12px;">
+        Tip: If you don’t have equipment yet, <strong>French Press</strong> is the easiest and most consistent.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>How it works</h2>
+      <div class="grid two">
+        <div class="card subtle">
+          <h3 class="h4">Keep comparisons fair</h3>
+          <ul class="bullets">
+            <li>Use the <strong>same brew method</strong> for the whole box</li>
+            <li>Brew <strong>one coffee at a time</strong></li>
+            <li>Taste hot → warm → cool</li>
+          </ul>
+        </div>
+        <div class="card subtle">
+          <h3 class="h4">What you’ll get</h3>
+          <ul class="bullets">
+            <li>Your taste profile (Balanced / Bright / Bold / Adventurous)</li>
+            <li>Origins you’ll likely enjoy</li>
+            <li>Roast range + best brew methods</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="muted small">No account required • Results are not stored • Mobile-friendly</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

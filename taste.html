@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Taste • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Taste & track</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="brew.html">Brew</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress">
+      <span class="progress-step is-done">Box</span>
+      <span class="progress-step is-done">Setup</span>
+      <span class="progress-step is-done">Brew</span>
+      <span class="progress-step is-active">Taste</span>
+      <span class="progress-step">Quiz</span>
+      <span class="progress-step">Result</span>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <div class="card-head">
+          <h1>Taste checklist</h1>
+          <div class="session-badges">
+            <span class="badge" id="tasteSample">—</span>
+            <span class="badge" id="tasteMethod">—</span>
+          </div>
+        </div>
+
+        <p class="muted small">
+  You’re not trying to be “correct” — you’re learning what you enjoy.
+</p>
+
+
+        <div class="form-grid">
+          <div class="field">
+            <label class="label">1) Do I like it?</label>
+            <div class="segmented" id="likeSeg">
+              <button class="seg-btn is-active" data-like="love">Love it</button>
+              <button class="seg-btn" data-like="okay">It’s okay</button>
+              <button class="seg-btn" data-like="no">Not for me</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">2) What stands out? <span class="muted small">(pick up to 2)</span></label>
+            <div class="chips" id="tasteFlavors">
+              <button class="chip-btn" data-flavor="chocolatey">Chocolatey</button>
+              <button class="chip-btn" data-flavor="nutty">Nutty / Caramel</button>
+              <button class="chip-btn" data-flavor="sweet">Sweet / Honey</button>
+              <button class="chip-btn" data-flavor="fruity">Fruity</button>
+              <button class="chip-btn" data-flavor="floral">Floral</button>
+              <button class="chip-btn" data-flavor="citrusy">Citrusy / Bright</button>
+              <button class="chip-btn" data-flavor="earthy">Spicy / Earthy</button>
+              <button class="chip-btn" data-flavor="roasty">Bitter / Roasty</button>
+            </div>
+            <p class="muted small" id="tasteFlavorNote">You can pick 2.</p>
+          </div>
+
+          <div class="field">
+            <label class="label">3) How does it feel?</label>
+            <div class="chips" id="tasteFeels">
+              <button class="chip-btn" data-feel="smooth">Smooth</button>
+              <button class="chip-btn" data-feel="clean">Clean</button>
+              <button class="chip-btn" data-feel="heavy">Heavy</button>
+              <button class="chip-btn" data-feel="sharp">Sharp</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">4) Would I drink this again?</label>
+            <div class="segmented" id="againSeg">
+              <button class="seg-btn is-active" data-again="yes">Yes</button>
+              <button class="seg-btn" data-again="maybe">Maybe</button>
+              <button class="seg-btn" data-again="no">No</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Notes (optional)</label>
+            <textarea class="textarea" id="tasteNotes" rows="4" placeholder="e.g., sweet, easy to drink, a little fruity..."></textarea>
+            <p class="muted small">
+  Not saved. If you want to keep notes, screenshot the page.
+</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="h4">How to taste (easy)</h3>
+        <ul class="bullets">
+          <li><strong>Smell</strong> first</li>
+          <li><strong>Sip hot:</strong> strength + bitterness</li>
+          <li><strong>Sip warm:</strong> sweetness appears</li>
+          <li><strong>Sip cooler:</strong> fruit/floral becomes clearer</li>
+        </ul>
+
+        <p class="muted small">
+  Most coffees taste different as they cool — that’s normal and useful.
+</p>
+
+
+        <div class="divider"></div>
+
+        <h3 class="h4">Pro tip</h3>
+        <p class="muted">Taste at least 2 coffees before the quiz for better accuracy.</p>
+      </div>
+    </div>
+
+   <div class="stage-actions">
+  <a class="btn" href="brew.html">Back</a>
+  <button class="btn" id="markCompletedBtn" type="button">Mark this sample completed</button>
+  <a class="btn primary" href="troubleshoot.html">Continue → Troubleshooting</a>
+</div>
+
+
+
+    <script src="app.js"></script>
+    <script>CTB.initTastePage();</script>
+  </main>
+</body>
+</html>

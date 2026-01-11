@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Result • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header no-print">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Your result</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="quiz.html">Quiz</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress no-print">
+      <span class="progress-step is-done">Box</span>
+      <span class="progress-step is-done">Setup</span>
+      <span class="progress-step is-done">Brew</span>
+      <span class="progress-step is-done">Taste</span>
+      <span class="progress-step is-done">Quiz</span>
+      <span class="progress-step is-active">Result</span>
+    </div>
+
+    <!-- Print-friendly card -->
+    <section class="card result-card" id="printCard">
+      <div class="result-label">Your Coffee Profile</div>
+      <h1 class="result-title" id="rTitle">—</h1>
+      <p class="result-summary" id="rSummary">—</p>
+
+      <div class="result-grid">
+        <div>
+          <div class="result-k">Origins to try</div>
+          <div class="result-v" id="rOrigins">—</div>
+        </div>
+        <div>
+          <div class="result-k">Roast range</div>
+          <div class="result-v" id="rRoast">—</div>
+        </div>
+        <div>
+          <div class="result-k">Best brew methods</div>
+          <div class="result-v" id="rMethods">—</div>
+        </div>
+        <div>
+          <div class="result-k">Next box</div>
+          <div class="result-v" id="rNext">—</div>
+        </div>
+      </div>
+
+      <div class="confidence no-print">
+        <div class="confidence-row">
+          <span class="muted small">Confidence</span>
+          <span class="muted small" id="rConfLabel">—</span>
+        </div>
+        <div class="bar"><div class="bar-fill" id="rConfBar" style="width:70%"></div></div>
+        <p class="muted small" id="rConfNote">—</p>
+      </div>
+
+      <div class="notice subtle no-print">
+        <strong>Tip:</strong> Screenshot this page or print/save as PDF. We don’t store results.
+
+      <div class="result-actions no-print">
+  <button class="btn" id="printBtn">Print / Save PDF</button>
+  <button class="btn" id="nextSampleBtn" type="button">Brew next sample</button>
+  <a class="btn primary" href="box.html">Change box & brew another</a>
+</div>
+
+    </section>
+
+    <section class="card no-print">
+      <h3 class="h4">How to use your result</h3>
+      <ul class="bullets">
+        <li>Buy coffee from the recommended <strong>origins</strong></li>
+        <li>Stay in the suggested <strong>roast range</strong></li>
+        <li>Use the recommended <strong>brew method</strong> for best results</li>
+      </ul>
+    </section>
+    <p class="muted small">
+  If you disagree with the result, that’s okay — brew 1–2 more samples and try again. Your preferences become clearer fast.
+</p>
+
+
+<div class="progress-bar" style="--progress:80%"></div>
+
+
+    <script src="app.js"></script>
+    <script>CTB.initResultPage();</script>
+  </main>
+</body>
+</html>

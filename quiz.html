@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Taste quiz</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="troubleshoot.html">Back</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress">
+      <span class="progress-step is-done">Box</span>
+      <span class="progress-step is-done">Setup</span>
+      <span class="progress-step is-done">Brew</span>
+      <span class="progress-step is-done">Taste</span>
+      <span class="progress-step is-active">Quiz</span>
+      <span class="progress-step">Result</span>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h1>Quick taste quiz</h1>
+        <p class="muted">We don’t store results. This runs in your browser only.</p>
+
+        <!-- Session progress (driven by app.js now) -->
+        <div class="notice subtle" style="margin-top:12px;">
+          <strong>Tip:</strong> Best after tasting <strong>2+</strong> coffees.
+          <span class="muted small" style="display:block;margin-top:6px;">
+            Completed: <span id="quizCompletedCount">—</span>
+          </span>
+        </div>
+
+        <p class="muted small" style="margin-top:12px;">
+          Don’t worry if you haven’t tasted every sample yet — you can still get a helpful result.
+          Your confidence will improve as you taste more.
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- Q1 -->
+        <h3 class="h4">Q1) Which coffees did you enjoy?</h3>
+        <p class="muted small">
+          <strong>Optional.</strong> Pick up to 2 you actually tried. If you’re not sure yet, skip this.
+        </p>
+        <p class="muted small" style="margin-top:8px;">✓ means you marked that sample completed.</p>
+
+
+        <!-- app.js will render these chips.
+             If you marked samples completed, you’ll see A ✓ / B ✓ etc. -->
+        <div class="chips" id="favChips"></div>
+
+        <div class="mini-status" style="margin-top:10px;">
+          <div class="mini-pill" id="favNote">Pick up to 2 (optional).</div>
+          <button class="btn small" type="button" id="skipFavsBtn">Skip favorites</button>
+        </div>
+
+        <p class="muted small" id="favHelp" style="margin-top:10px;">
+          Haven’t tasted all samples? Totally fine — your result will use the rest of the quiz.
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- Q2 -->
+        <h3 class="h4">Q2) What flavors stood out?</h3>
+        <p class="muted small">Pick up to 3. (If you’re unsure, pick just 1 — or skip.)</p>
+
+        <div class="chips" id="quizFlavors">
+          <button class="chip-btn" data-qflavor="chocolatey">Chocolatey / cocoa</button>
+          <button class="chip-btn" data-qflavor="nutty">Nutty / caramel</button>
+          <button class="chip-btn" data-qflavor="sweet">Sweet / honey</button>
+          <button class="chip-btn" data-qflavor="fruity">Fruity</button>
+          <button class="chip-btn" data-qflavor="floral">Floral</button>
+          <button class="chip-btn" data-qflavor="citrusy">Citrusy / bright</button>
+          <button class="chip-btn" data-qflavor="earthy">Spicy / earthy</button>
+          <button class="chip-btn" data-qflavor="roasty">Bitter / roasty</button>
+        </div>
+
+        <div class="mini-status" style="margin-top:10px;">
+          <div class="mini-pill" id="flavorNote">Pick up to 3.</div>
+          <button class="btn small" type="button" id="skipFlavorsBtn">Skip flavors</button>
+        </div>
+
+        <p class="muted small" style="margin-top:10px;">
+          If you’re unsure, skip flavors and answer the right-side questions — you’ll still get a result.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="qblock">
+          <h3 class="h4">Q3) What felt best?</h3>
+          <div class="stack">
+            <label class="radio"><input type="radio" name="feelBest" value="smooth_comforting" checked /> <span>Smooth & comforting</span></label>
+            <label class="radio"><input type="radio" name="feelBest" value="clean_bright" /> <span>Clean & bright</span></label>
+            <label class="radio"><input type="radio" name="feelBest" value="strong_bold" /> <span>Strong & bold</span></label>
+            <label class="radio"><input type="radio" name="feelBest" value="curious_unusual" /> <span>Curious & unusual</span></label>
+            <label class="radio"><input type="radio" name="feelBest" value="not_sure" /> <span>Not sure</span></label>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="qblock">
+          <h3 class="h4">Q4) What roast felt best?</h3>
+          <div class="stack">
+            <label class="radio"><input type="radio" name="roastBest" value="light" checked /> <span>Light</span></label>
+            <label class="radio"><input type="radio" name="roastBest" value="medium" /> <span>Medium</span></label>
+            <label class="radio"><input type="radio" name="roastBest" value="dark" /> <span>Dark</span></label>
+            <label class="radio"><input type="radio" name="roastBest" value="not_sure" /> <span>Not sure</span></label>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="qblock">
+          <h3 class="h4">Q5) How do you usually drink coffee?</h3>
+          <div class="stack">
+            <label class="radio"><input type="radio" name="milkSugar" value="black" checked /> <span>Black</span></label>
+            <label class="radio"><input type="radio" name="milkSugar" value="milk" /> <span>With milk</span></label>
+            <label class="radio"><input type="radio" name="milkSugar" value="sugar" /> <span>With sugar</span></label>
+            <label class="radio"><input type="radio" name="milkSugar" value="milk_sugar" /> <span>Milk + sugar</span></label>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="qblock">
+          <h3 class="h4">Q6) Preferred brew method</h3>
+          <div class="stack">
+            <label class="radio"><input type="radio" name="methodPref" value="french_press" checked /> <span>French Press</span></label>
+            <label class="radio"><input type="radio" name="methodPref" value="v60" /> <span>V60 / Pour-over</span></label>
+            <label class="radio"><input type="radio" name="methodPref" value="moka_pot" /> <span>Moka Pot</span></label>
+            <label class="radio"><input type="radio" name="methodPref" value="not_sure" /> <span>Not sure</span></label>
+          </div>
+        </div>
+
+        <div class="notice subtle" style="margin-top:14px;">
+          <strong>Quick note:</strong> If you haven’t tasted many coffees yet, that’s okay —
+          you can re-take the quiz later for a higher-confidence result.
+        </div>
+
+        <div class="stage-actions inline">
+          <a class="btn" href="troubleshoot.html">Back</a>
+          <button class="btn primary" id="getResult">Show my taste profile</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>CTB.initQuizPage();</script>
+  </main>
+</body>
+</html>

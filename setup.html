@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Setup • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Setup</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="box.html">Box</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress">
+      <span class="progress-step is-done">Box</span>
+      <span class="progress-step is-active">Setup</span>
+      <span class="progress-step">Brew</span>
+      <span class="progress-step">Taste</span>
+      <span class="progress-step">Quiz</span>
+      <span class="progress-step">Result</span>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <div class="card-head">
+          <h1>Setup</h1>
+          <span class="badge" id="boxBadge">—</span>
+        </div>
+
+        <h3 class="h4">Choose your brew method</h3>
+        <fieldset class="fieldset">
+          <label class="radio">
+            <input type="radio" name="brewMethod" value="french_press" checked />
+            <span><strong>French Press</strong><span class="muted small">Easy, rich, best for beginners</span></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="brewMethod" value="v60" />
+            <span><strong>V60 / Pour-over</strong><span class="muted small">Clean & bright, highlights origin</span></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="brewMethod" value="moka_pot" />
+            <span><strong>Moka Pot</strong><span class="muted small">Bold & intense, best for medium/dark</span></span>
+          </label>
+        </fieldset>
+
+        <p class="muted small">
+  Goal: keep the brew consistent so differences come from the coffee, not the recipe.
+</p>
+
+
+        <div class="notice subtle" style="margin-top:14px;">
+          <strong>Tip:</strong> Use one method for the whole box so comparisons are fair.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="h4">Pick a coffee sample</h3>
+<p class="muted small" id="sampleHint">—</p>
+<p class="muted small" id="setupCompletedCount">—</p>
+
+
+<div class="mini-status">
+  <div class="mini-pill" id="currentSamplePill">Current: —</div>
+  <div class="mini-pill" id="nextSamplePill">Next: —</div>
+</div>
+
+
+<div class="sample-progress" id="sampleProgress"></div>
+
+<div class="sample-row" id="sampleRow"></div>
+
+
+        <div class="divider"></div>
+
+        <label class="label">Optional: name your sample</label>
+        <input class="input" id="sampleName" placeholder="e.g., Ethiopia (light roast)" />
+        <p class="muted small">
+  Optional. Great for notes like “sweet” or “too bitter”. Not saved — screenshot if needed.
+</p>
+
+
+        <div class="divider"></div>
+
+        <h3 class="h4">Sample details</h3>
+        <div id="sampleDetails" class="muted small"></div>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <a class="btn" href="box.html">Back</a>
+      <a class="btn primary" href="brew.html">Continue → Brew</a>
+    </div>
+
+    <script src="app.js"></script>
+    <script>CTB.initSetupPage();</script>
+  </main>
+</body>
+</html>

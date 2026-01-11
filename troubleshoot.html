@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Troubleshoot • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">If it tastes…</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="taste.html">Taste</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress">
+      <span class="progress-step is-done">Box</span>
+      <span class="progress-step is-done">Setup</span>
+      <span class="progress-step is-done">Brew</span>
+      <span class="progress-step is-done">Taste</span>
+      <span class="progress-step is-active">Quiz</span>
+      <span class="progress-step">Result</span>
+    </div>
+
+    <div class="card">
+      <h1>If it tastes… (quick fixes)</h1>
+      <p class="muted">
+  Quick fixes. Change only one thing next time (grind, time, or water temp) so you learn faster.
+</p>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <h3 class="h4">Sour / sharp</h3>
+        <p class="muted small">Often under-extracted.</p>
+        <ul class="bullets">
+          <li>Grind a bit <strong>finer</strong></li>
+          <li>Use <strong>hotter</strong> water</li>
+          <li>Increase brew time slightly</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="h4">Bitter / harsh / dry</h3>
+        <p class="muted small">Often over-extracted (or too hot / too fine).</p>
+        <ul class="bullets">
+          <li>Grind a bit <strong>coarser</strong></li>
+          <li>Use slightly <strong>cooler</strong> water</li>
+          <li>Shorten brew time a little</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="h4">Weak / watery</h3>
+        <p class="muted small">Strength too low.</p>
+        <ul class="bullets">
+          <li>Use <strong>more coffee</strong> or <strong>less water</strong></li>
+          <li>Keep steps the same — change only ratio</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 class="h4">Too strong / heavy</h3>
+        <p class="muted small">Strength too high.</p>
+        <ul class="bullets">
+          <li>Use <strong>less coffee</strong> or <strong>more water</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <a class="btn" href="taste.html">Back</a>
+      <a class="btn primary" href="quiz.html">Continue → Quiz</a>
+    </div>
+
+    <script src="app.js"></script>
+    <script>CTB.initCommon();</script>
+  </main>
+</body>
+</html>

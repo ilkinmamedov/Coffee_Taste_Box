@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Start • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Start here</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="shop.html">Shop</a>
+        <a class="btn small" href="index.html">Guide</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <div class="card-head">
+        <h1>Start your tasting</h1>
+        <span class="badge">No account • No saved results</span>
+      </div>
+
+      <p class="muted">
+        Choose the box you bought. Then we’ll guide you step-by-step: Setup → Brew → Taste → Quiz → Result.
+      </p>
+
+      <div class="product-grid" style="margin-top:14px;">
+        <a class="product-card" href="box.html" style="text-decoration:none;">
+          <div class="badge">Beginner</div>
+          <h3 class="h4">Find Your Taste (A–D)</h3>
+          <p class="muted small">Best first box if you’re unsure what you like.</p>
+          <div class="product-actions">
+            <span class="btn primary">Continue →</span>
+          </div>
+        </a>
+
+        <a class="product-card" href="box.html" style="text-decoration:none;">
+          <div class="badge">Intermediate</div>
+          <h3 class="h4">Explore Origins (A–F)</h3>
+          <p class="muted small">Taste geography and compare origins fairly.</p>
+          <div class="product-actions">
+            <span class="btn primary">Continue →</span>
+          </div>
+        </a>
+
+        <a class="product-card" href="box.html" style="text-decoration:none;">
+          <div class="badge">Intermediate</div>
+          <h3 class="h4">Roast Spectrum (A–F)</h3>
+          <p class="muted small">Find your roast preference (light → dark).</p>
+          <div class="product-actions">
+            <span class="btn primary">Continue →</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="notice subtle">
+        <strong>Tip:</strong> Use the same brew method for the whole box to compare accurately.
+      </div>
+
+      <div class="stage-actions">
+        <a class="btn" href="shop.html">Back to shop</a>
+        <a class="btn primary" href="box.html">Go to Box selection</a>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>CTB.initCommon();</script>
+  </main>
+</body>
+</html>

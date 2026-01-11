@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Product</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="shop.html">Shop</a>
+        <a class="btn small" href="start.html">Start</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card" id="productCard">
+      <div class="card-head">
+        <h1 id="pName">Product</h1>
+        <span class="badge" id="pBadge">—</span>
+      </div>
+
+      <p class="muted" id="pOneLine">—</p>
+
+      <div class="notice subtle" style="margin-top:14px;">
+        <strong>Best for:</strong> <span id="pBestFor">—</span><br/>
+        <strong>What you’ll learn:</strong> <span id="pLearn">—</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3 class="h4">What’s inside</h3>
+      <ul class="bullets" id="pInside"></ul>
+
+      <div class="divider"></div>
+
+      <h3 class="h4">How it works (simple)</h3>
+      <ol class="bullets" id="pHow"></ol>
+
+      <div class="divider"></div>
+
+      <h3 class="h4">Brew methods supported</h3>
+      <div class="chips" id="pMethods"></div>
+      <p class="muted small" style="margin-top:10px;" id="pTip"></p>
+
+      <div class="divider"></div>
+
+      <h3 class="h4">Delivery & payment</h3>
+      <div id="pDelivery"></div>
+
+      <div class="divider"></div>
+
+      <h3 class="h4">Order</h3>
+      <p class="muted small" id="pOrderNote">
+        Message us on WhatsApp with the details below. We’ll confirm availability and delivery before payment.
+      </p>
+
+      <div class="stage-actions">
+        <a class="btn" href="shop.html">Back to shop</a>
+        <a class="btn primary" id="pWhatsApp" target="_blank" href="#">Order on WhatsApp</a>
+      </div>
+
+      <p class="muted small" style="margin-top:12px;">
+        Note: Some items may rotate based on stock. We’ll confirm before payment.
+      </p>
+    </div>
+
+    <script src="catalog.js"></script>
+    <script src="app.js"></script>
+    <script>
+      CTB.initCommon();
+
+      const qs = (s) => document.querySelector(s);
+
+      function getParam(name){
+        const u = new URL(window.location.href);
+        return u.searchParams.get(name);
+      }
+
+      const id = getParam("id") || "beginner_box";
+      const P = (window.CTB_PRODUCTS || {})[id];
+
+      if(!P){
+        qs("#pName").textContent = "Product not found";
+        qs("#pOneLine").textContent = "This product ID does not exist. Please go back to the shop.";
+        qs("#pWhatsApp").style.display = "none";
+      } else {
+        document.title = `${P.name} • Coffee Taste Box`;
+        qs("#pName").textContent = P.name;
+        qs("#pBadge").textContent = P.badge || "—";
+        qs("#pOneLine").textContent = P.oneLine || "—";
+        qs("#pBestFor").textContent = P.bestFor || "—";
+        qs("#pLearn").textContent = P.learn || "—";
+
+        // inside list
+        const inside = qs("#pInside");
+        inside.innerHTML = (P.inside || []).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("");
+
+        // how it works list
+        const how = qs("#pHow");
+        how.innerHTML = (P.howItWorks || []).map(x => `<li>${x}</li>`).join("");
+
+        // methods chips
+        const methods = qs("#pMethods");
+        methods.innerHTML = (P.methods || []).map(m => `<span class="chip-btn is-active" style="pointer-events:none;">${m}</span>`).join("");
+
+        // tip
+        qs("#pTip").textContent = P.tip || "";
+
+        // delivery
+        const d = qs("#pDelivery");
+        d.innerHTML = `
+          ${ (P.delivery || []).map(([k,v]) => `
+            <div class="summary-row"><div class="summary-k">${k}</div><div class="summary-v">${v}</div></div>
+          `).join("") }
+        `;
+
+        // WhatsApp link
+        const phone = "994XXXXXXXXX"; // CHANGE THIS
+        const fields = (P.whatsappFields || ["Delivery city","Phone number"]).map(f => `• ${f}:`).join("%0A");
+        const text =
+          `Hi!%20I%20want%20to%20order:%0A%0A` +
+          `•%20Product:%20${encodeURIComponent(P.whatsappProductLine || P.name)}%0A` +
+          `${fields}%0A%0AThank%20you!`;
+
+        qs("#pWhatsApp").href = `https://wa.me/${phone}?text=${text}`;
+      }
+    </script>
+  </main>
+</body>
+</html>

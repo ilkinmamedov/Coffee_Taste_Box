@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brew • Coffee Taste Box</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">☕</div>
+        <div>
+          <div class="brand-name">Coffee Taste Box</div>
+          <div class="brand-tag">Brew guide</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a class="btn small" href="setup.html">Setup</a>
+        <button class="btn small" data-reset>Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="progress">
+      <span class="progress-step is-done">Box</span>
+      <span class="progress-step is-done">Setup</span>
+      <span class="progress-step is-active">Brew</span>
+      <span class="progress-step">Taste</span>
+      <span class="progress-step">Quiz</span>
+      <span class="progress-step">Result</span>
+    </div>
+
+    <div class="grid two">
+      <div class="card">
+        <div class="card-head">
+          <h1>Brew guide</h1>
+          <div class="session-badges">
+            <span class="badge" id="methodBadge">—</span>
+            <span class="badge" id="sampleBadge">—</span>
+          </div>
+        </div>
+
+        <p class="muted small">
+  Follow the default recipe first. If it tastes off, we’ll adjust later — change only one thing at a time.
+</p>
+
+
+        <div class="recipe-summary" id="recipeSummary"></div>
+        <div class="variations" id="recipeVariations"></div>
+
+        <div class="timer card timer-card">
+          <div class="timer-readout" id="timerReadout">00:00</div>
+          <div class="timer-controls">
+            <button class="btn small" id="timerStart">Start</button>
+            <button class="btn small" id="timerPause">Pause</button>
+            <button class="btn small" id="timerReset">Reset</button>
+          </div>
+          <p class="muted small">
+  Use the timer if you want. Consistent time = easier comparisons.
+</p>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="h4">Steps</h3>
+        <ol class="steps" id="stepsList"></ol>
+
+        <div class="notice subtle" style="margin-top:14px;">
+          <strong>Reminder:</strong> Keep method + ratio consistent across the box. This makes your taste results much more accurate.
+        </div>
+      </div>
+    </div>
+
+    <div class="stage-actions">
+      <a class="btn" href="setup.html">Back</a>
+      <a class="btn primary" href="taste.html">Continue → Taste</a>
+    </div>
+
+    <script src="app.js"></script>
+    <script>CTB.initBrewPage();</script>
+  </main>
+</body>
+</html>
