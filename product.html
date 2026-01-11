@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Product • Coffee Taste Box</title>
+  <meta name="description" content="Product details and WhatsApp ordering for Coffee Taste Box (Azerbaijan)." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -61,19 +62,72 @@
 
       <div class="divider"></div>
 
-      <h3 class="h4">Order</h3>
-      <p class="muted small" id="pOrderNote">
-        Message us on WhatsApp with the details below. We’ll confirm availability and delivery before payment.
-      </p>
-
-      <div class="stage-actions">
-        <a class="btn" href="shop.html">Back to shop</a>
-        <a class="btn primary" id="pWhatsApp" target="_blank" href="#">Order on WhatsApp</a>
+      <!-- CLEAN ORDER FLOW -->
+      <h3 class="h4">How to order</h3>
+      <div class="notice subtle" style="margin-top:12px;">
+        <strong>Step 1:</strong> Fill details (optional) → <strong>Step 2:</strong> WhatsApp message opens → <strong>Step 3:</strong>
+        we confirm stock + delivery → <strong>payment link after confirmation</strong> → delivery.
       </div>
 
-      <p class="muted small" style="margin-top:12px;">
-        Note: Some items may rotate based on stock. We’ll confirm before payment.
+      <p class="muted small" id="pOrderNote" style="margin-top:10px;">
+        You can order even if you haven’t tasted everything yet. We’ll confirm availability and delivery before payment.
       </p>
+
+      <!-- Optional prefill form (doesn't break anything if ignored) -->
+      <div class="grid two" style="margin-top:12px;">
+        <div class="card subtle">
+          <label class="label" for="oQty">Quantity (optional)</label>
+          <input class="input" id="oQty" type="number" min="1" step="1" placeholder="1" />
+
+          <div class="divider"></div>
+
+          <label class="label" for="oCity">Delivery city (optional)</label>
+          <input class="input" id="oCity" placeholder="Baku" />
+
+          <div class="divider"></div>
+
+          <label class="label" for="oPhone">Phone number (optional)</label>
+          <input class="input" id="oPhone" placeholder="+994..." />
+          <p class="muted small" style="margin-top:10px;">
+            Tip: If you don’t fill these, you can type them in WhatsApp after it opens.
+          </p>
+        </div>
+
+        <div class="card subtle">
+          <div id="oMethodWrap" style="display:none;">
+            <label class="label" for="oMethod">Brew method (optional)</label>
+            <select class="input" id="oMethod"></select>
+            <p class="muted small" style="margin-top:10px;">
+              Pick a method you’ll use for the whole box (best for fair comparisons).
+            </p>
+            <div class="divider"></div>
+          </div>
+
+          <div id="oExtraWrap" style="display:none;">
+            <label class="label" for="oExtra">Extra note (optional)</label>
+            <textarea class="textarea" id="oExtra" rows="4" placeholder="Any notes (color, pack size, capacity, etc.)"></textarea>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="stage-actions inline">
+            <a class="btn" href="shop.html">Back to shop</a>
+            <a class="btn primary" id="pWhatsApp" target="_blank" href="#">Order on WhatsApp</a>
+          </div>
+
+          <p class="muted small" style="margin-top:12px;">
+            Note: Some items may rotate based on stock. We’ll confirm before payment.
+          </p>
+        </div>
+      </div>
+
+      <!-- If product not found -->
+      <div class="notice" id="notFoundNotice" style="display:none; margin-top:16px;">
+        <strong>Product not found:</strong> This product ID doesn’t exist. Please go back to the shop and choose an item again.
+        <div class="stage-actions" style="margin-top:12px;">
+          <a class="btn primary" href="shop.html">Go to shop</a>
+        </div>
+      </div>
     </div>
 
     <script src="catalog.js"></script>
@@ -88,15 +142,95 @@
         return u.searchParams.get(name);
       }
 
+      function escapeHtml(str){
+        return String(str || "")
+          .replaceAll("&","&amp;")
+          .replaceAll("<","&lt;")
+          .replaceAll(">","&gt;")
+          .replaceAll('"',"&quot;")
+          .replaceAll("'","&#039;");
+      }
+
       const id = getParam("id") || "beginner_box";
       const P = (window.CTB_PRODUCTS || {})[id];
 
+      const phone = "994XXXXXXXXX"; // CHANGE THIS
+
+      function buildWhatsAppUrl(){
+        if(!P) return "#";
+
+        const qty = (qs("#oQty") && qs("#oQty").value) ? qs("#oQty").value.trim() : "";
+        const city = (qs("#oCity") && qs("#oCity").value) ? qs("#oCity").value.trim() : "";
+        const userPhone = (qs("#oPhone") && qs("#oPhone").value) ? qs("#oPhone").value.trim() : "";
+        const method = (qs("#oMethodWrap") && qs("#oMethodWrap").style.display !== "none" && qs("#oMethod"))
+          ? (qs("#oMethod").value || "")
+          : "";
+        const extra = (qs("#oExtra") && qs("#oExtra").value) ? qs("#oExtra").value.trim() : "";
+
+        // Fields from catalog.js (if present)
+        const fieldLines = (P.whatsappFields || ["Delivery city", "Phone number"])
+          .map(f => `• ${f}:`)
+          .join("\n");
+
+        // Helpful prefilled lines
+        const prefilled = [];
+        if(qty) prefilled.push(`• Quantity: ${qty}`);
+        if(method) prefilled.push(`• Brew method: ${method}`);
+        if(city) prefilled.push(`• Delivery city: ${city}`);
+        if(userPhone) prefilled.push(`• Phone number: ${userPhone}`);
+        if(extra) prefilled.push(`• Note: ${extra}`);
+
+        const message =
+`Hi! I want to order:
+
+• Product: ${P.whatsappProductLine || P.name}
+${prefilled.length ? ("\n" + prefilled.join("\n")) : ""}
+
+If anything is missing:
+${fieldLines}
+
+Thank you!`;
+
+        return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      }
+
+      function wireWhatsAppButton(){
+        const btn = qs("#pWhatsApp");
+        if(!btn) return;
+
+        const refresh = () => { btn.href = buildWhatsAppUrl(); };
+
+        // initial
+        refresh();
+
+        // live updates
+        ["#oQty","#oCity","#oPhone","#oMethod","#oExtra"].forEach(sel => {
+          const el = qs(sel);
+          if(el) el.addEventListener("input", refresh);
+          if(el) el.addEventListener("change", refresh);
+        });
+      }
+
       if(!P){
+        // hide main content bits
         qs("#pName").textContent = "Product not found";
         qs("#pOneLine").textContent = "This product ID does not exist. Please go back to the shop.";
-        qs("#pWhatsApp").style.display = "none";
+        qs("#pBadge").textContent = "—";
+        qs("#pBestFor").textContent = "—";
+        qs("#pLearn").textContent = "—";
+
+        qs("#pInside").innerHTML = "";
+        qs("#pHow").innerHTML = "";
+        qs("#pMethods").innerHTML = "";
+        qs("#pTip").textContent = "";
+        qs("#pDelivery").innerHTML = "";
+
+        // hide order UI
+        if(qs("#pWhatsApp")) qs("#pWhatsApp").style.display = "none";
+        if(qs("#notFoundNotice")) qs("#notFoundNotice").style.display = "block";
       } else {
         document.title = `${P.name} • Coffee Taste Box`;
+
         qs("#pName").textContent = P.name;
         qs("#pBadge").textContent = P.badge || "—";
         qs("#pOneLine").textContent = P.oneLine || "—";
@@ -104,37 +238,61 @@
         qs("#pLearn").textContent = P.learn || "—";
 
         // inside list
-        const inside = qs("#pInside");
-        inside.innerHTML = (P.inside || []).map(([k,v]) => `<li><strong>${k}:</strong> ${v}</li>`).join("");
+        qs("#pInside").innerHTML = (P.inside || [])
+          .map(([k,v]) => `<li><strong>${escapeHtml(k)}:</strong> ${escapeHtml(v)}</li>`)
+          .join("");
 
         // how it works list
-        const how = qs("#pHow");
-        how.innerHTML = (P.howItWorks || []).map(x => `<li>${x}</li>`).join("");
+        qs("#pHow").innerHTML = (P.howItWorks || [])
+          .map(x => `<li>${escapeHtml(x)}</li>`)
+          .join("");
 
-        // methods chips
-        const methods = qs("#pMethods");
-        methods.innerHTML = (P.methods || []).map(m => `<span class="chip-btn is-active" style="pointer-events:none;">${m}</span>`).join("");
+        // methods chips + dropdown (Option A UX)
+        const methods = (P.methods || []);
+        const methodsWrap = qs("#pMethods");
+        if(methodsWrap){
+          methodsWrap.innerHTML = methods.length
+            ? methods.map(m => `<span class="chip-btn is-active" style="pointer-events:none;">${escapeHtml(m)}</span>`).join("")
+            : `<span class="muted small">—</span>`;
+        }
+
+        // method dropdown only if meaningful
+        const oMethodWrap = qs("#oMethodWrap");
+        const oMethod = qs("#oMethod");
+        if(oMethodWrap && oMethod){
+          if(methods && methods.length && methods[0] !== "Any"){
+            oMethodWrap.style.display = "block";
+            oMethod.innerHTML = `
+              <option value="">Not sure</option>
+              ${methods.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join("")}
+            `;
+          } else {
+            oMethodWrap.style.display = "none";
+          }
+        }
+
+        // extra note field: show for accessories/equipment/bundles as a nice catch-all
+        const extraWrap = qs("#oExtraWrap");
+        if(extraWrap){
+          extraWrap.style.display = "block";
+        }
 
         // tip
         qs("#pTip").textContent = P.tip || "";
 
-        // delivery
-        const d = qs("#pDelivery");
-        d.innerHTML = `
-          ${ (P.delivery || []).map(([k,v]) => `
-            <div class="summary-row"><div class="summary-k">${k}</div><div class="summary-v">${v}</div></div>
-          `).join("") }
-        `;
+        // delivery (ensure copy consistency)
+        // If catalog.js still has older payment lines for some items, this shows what you stored.
+        // Prefer updating catalog.js too later, but this page will still look fine.
+        qs("#pDelivery").innerHTML = (P.delivery || []).map(([k,v]) => {
+          // Normalize common payment copy for UI consistency
+          const vv = (String(k).toLowerCase() === "payment")
+            ? "Payment link after confirmation"
+            : v;
+          return `<div class="summary-row"><div class="summary-k">${escapeHtml(k)}</div><div class="summary-v">${escapeHtml(vv)}</div></div>`;
+        }).join("");
 
-        // WhatsApp link
-        const phone = "994XXXXXXXXX"; // CHANGE THIS
-        const fields = (P.whatsappFields || ["Delivery city","Phone number"]).map(f => `• ${f}:`).join("%0A");
-        const text =
-          `Hi!%20I%20want%20to%20order:%0A%0A` +
-          `•%20Product:%20${encodeURIComponent(P.whatsappProductLine || P.name)}%0A` +
-          `${fields}%0A%0AThank%20you!`;
-
-        qs("#pWhatsApp").href = `https://wa.me/${phone}?text=${text}`;
+        // WhatsApp
+        wireWhatsAppButton();
       }
     </script>
   </main>
